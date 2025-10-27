@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // ← à ajouter
 import Card from "../Composants/Card.jsx";
 
 function Accueil() {
@@ -8,6 +9,7 @@ function Accueil() {
         fetch("/logements.json")
             .then((res) => res.json())
             .then((data) => setLogements(data))
+            .catch((err) => console.error(err));
     }, []);
 
     return (
@@ -18,11 +20,12 @@ function Accueil() {
             </div>
             <div className="card-grid">
                 {logements.map((logement) => (
-                    <Card
-                        key={logement.id}
-                        image={logement.cover}
-                        title={logement.title}
-                    />
+                    <Link key={logement.id} to={`/logement/${logement.id}`}>
+                        <Card
+                            image={logement.cover}
+                            title={logement.title}
+                        />
+                    </Link>
                 ))}
             </div>
         </div>
@@ -30,4 +33,3 @@ function Accueil() {
 }
 
 export default Accueil;
-

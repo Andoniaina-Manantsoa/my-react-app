@@ -1,4 +1,4 @@
-function Card({ image, title }) {
+function Card({ id, image, title }) {
     return (
         <div className="card">
             <div className="card__header">

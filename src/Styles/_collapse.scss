@@ -1,0 +1,51 @@
+@import 'variables';
+
+.collapse {
+    width: 100%;
+    border-radius: $base-border-radius;
+    background-color: $base-color;
+    overflow: hidden;
+
+    .collapse-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 12px;
+        background-color: $base-color;
+        color: #ffffff;
+
+        .arrow {
+            transition: transform 0.3s;
+            font-size: 20px;
+
+            &.open {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .collapse-content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0 20px;
+        transition: max-height 0.5s ease;
+
+        &.open {
+            max-height: 500px; // assez grand pour tout le contenu
+            padding: 15px 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .collapse-header h2 {
+            font-size: 16px;
+        }
+
+        .collapse-content {
+            font-size: 14px;
+        }
+    }
+}

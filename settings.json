@@ -1,0 +1,25 @@
+{
+    // 🔧 Active le formatage automatique
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    // 🧩 Force l’indentation automatique complète
+    "editor.autoIndent": "full",
+    // 🔤 Utilise des espaces plutôt que des tabulations
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    // ✨ Définit Prettier comme formateur par défaut
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    // 💅 Optionnel : formate aussi le JSON, JSX, TS
+    "[javascriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}

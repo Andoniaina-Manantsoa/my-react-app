@@ -1,4 +1,4 @@
-@import 'variables';
+@use './variables' as *;
 
 body {
     font-family: 'Montserrat', sans-serif;
@@ -13,7 +13,7 @@ body {
 
 .banner {
     width: 100%;
-    max-width: 1240px;
+    max-width: $base-width;
     height: 223px; // fixe la hauteur
     margin: auto;
     margin-bottom: 50px;
@@ -45,10 +45,7 @@ body {
         width: 100%;
     }
 
-    // 🟢 Styles spécifiques à chaque page :
-    &--about {
-        background-image: url('../assets/image_about.png'); // chemin relatif
-    }
+    // 🟢 Styles spécifiques :
 
     &--home {
         background-image: url('../assets/image_titre_accueil.png'); // chemin relatif
@@ -111,7 +108,7 @@ body {
 
 header {
     width: 100%;
-    max-width: 1240px;
+    max-width: $base-width;
     display: flex;
     justify-content: space-between;
     align-items: center;

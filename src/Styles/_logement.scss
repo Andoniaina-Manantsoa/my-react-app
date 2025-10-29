@@ -1,7 +1,7 @@
-@import 'variables';
+@use './variables' as *;
 
 .logement-page {
-    max-width: 1240px;
+    max-width: $base-width;
     margin: auto;
     padding: 20px;
 

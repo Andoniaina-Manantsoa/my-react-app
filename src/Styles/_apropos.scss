@@ -1,0 +1,39 @@
+@use './variables' as *;
+
+.apropos-page {
+    max-width: 1240px;
+    margin: auto;
+    padding: 50px 20px;
+
+    .apropos-collapses {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+.banner--apropos {
+    background-image: url('../assets/image_about.png');
+    height: 223px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .banner__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 8px;
+    }
+
+    .banner__title {
+        position: relative;
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+        z-index: 1;
+    }
+}

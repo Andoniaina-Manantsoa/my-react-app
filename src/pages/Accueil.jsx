@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom"; // ← à ajouter
 import Card from "../Composants/Card.jsx";
+import "../Styles/_accueil.scss";
 
 function Accueil() {
     const [logements, setLogements] = useState([]);

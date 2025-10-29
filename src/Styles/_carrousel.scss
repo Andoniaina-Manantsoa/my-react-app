@@ -1,9 +1,9 @@
-@import 'variables';
+@use './variables' as *;
 
 .carrousel {
     position: relative;
     width: 100%;
-    max-width: 1240px;
+    max-width: $base-width;
     height: 415px; // hauteur fixe
     margin: auto;
     border-radius: 10px;

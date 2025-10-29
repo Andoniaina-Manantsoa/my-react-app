@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import logo from '../assets/logo.png';
 
 function Header() {
     return (
         <header>
-            <img src="/src/assets/LOGO.png" alt="Logo Kasa" className="header__logo"/>
+            <img src={logo} alt="Logo Kasa" className="header__logo"/>
             <nav className="header__navbar">
                 <ul className="header__navbar-list">
                     <li>

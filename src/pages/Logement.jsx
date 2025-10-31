@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "../Styles/_logement.scss";
 import Collapse from "../Composants/Collapse.jsx";
 import Carrousel from "../Composants/Carrousel.jsx";
 
@@ -41,14 +40,18 @@ function Logement() {
                 </div>
 
                 <div className="logement-host">
-                    <div className="host-name">{logement.host.name}</div>
-                    <img src={logement.host.picture} alt={logement.host.name} className="host-photo" />
+                    <div className="host-info">
+                        <div className="host-name">{logement.host.name}</div>
+                        <img src={logement.host.picture} alt={logement.host.name} className="host-photo" />
+                    </div>
+
                     <div className="logement-rating">
                         {Array.from({ length: 5 }, (_, i) => (
                             <span key={i} className={i < logement.rating ? "star filled" : "star"}>★</span>
                         ))}
                     </div>
                 </div>
+
             </div>
 
             {/* Collapses */}

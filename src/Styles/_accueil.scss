@@ -188,3 +188,57 @@ footer {
         font-size: 18px;
     }
 }
+
+// --- VERSION MOBILE ---
+@media (max-width: 768px) {
+    header {
+        width: 335px;
+        padding: 20px;
+    }
+
+    img {
+        width: 300px;
+    }
+
+    nav ul {
+        gap: 15px;
+        font-size: 12px;
+    }
+
+    .banner {
+        width: 335px;
+        height: 120px;
+        border-radius: 10px;
+
+        &__title {
+            font-size: 24px;
+            text-align: left;
+            padding-left: 20px;
+            width: 80%;
+        }
+    }
+
+    .card-grid {
+        width: 335px;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+        background-color: transparent;
+    }
+
+    .card {
+        img {
+            width: 335px;
+            height: 200px;
+        }
+
+        .card__title {
+            font-size: 16px;
+        }
+    }
+
+    footer {
+        font-size: 12px;
+        padding: 20px;
+    }
+}

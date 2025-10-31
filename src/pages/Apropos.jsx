@@ -1,5 +1,4 @@
 import Collapse from "../Composants/Collapse.jsx";
-import "../Styles/_apropos.scss";
 
 function Apropos() {
     const collapsesData = [

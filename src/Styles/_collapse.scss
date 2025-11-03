@@ -5,21 +5,27 @@
     border-radius: $base-border-radius;
     background-color: $base-color;
     overflow: hidden;
+    color: #ffffff;
+    margin-bottom: 15px;
 
     .collapse-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 20px;
+        padding: 12px 20px;
         cursor: pointer;
         font-weight: bold;
-        font-size: 12px;
+        font-size: 14px;
         background-color: $base-color;
-        color: #ffffff;
+
+        h2 {
+            font-size: 16px;
+            margin: 0;
+        }
 
         .arrow {
             transition: transform 0.3s;
-            font-size: 20px;
+            font-size: 16px;
 
             &.open {
                 transform: rotate(180deg);
@@ -28,24 +34,33 @@
     }
 
     .collapse-content {
-        max-height: 0;
+        height: 0;
         overflow: hidden;
         padding: 0 20px;
-        transition: max-height 0.5s ease;
+        transition: height 0.3s ease;
 
-        &.open {
-            max-height: 500px; // assez grand pour tout le contenu
-            padding: 15px 20px;
+        p,
+        ul {
+            margin: 10px 0;
+        }
+
+        ul {
+            padding-left: 20px;
+
+            li {
+                margin-bottom: 5px;
+            }
         }
     }
 
     @media (max-width: 768px) {
         .collapse-header h2 {
-            font-size: 16px;
+            font-size: 12px;
         }
 
         .collapse-content {
-            font-size: 14px;
+            font-size: 12px;
+            padding: 0 15px;
         }
     }
 }

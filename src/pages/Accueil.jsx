@@ -3,8 +3,11 @@ import { Link } from "react-router-dom"; // ← à ajouter
 import Card from "../Composants/Card.jsx";
 
 function Accueil() {
+
+    // État pour stocker les logements
     const [logements, setLogements] = useState([]);
 
+    // Récupération des données des logements au chargement du composant
     useEffect(() => {
         fetch("/logements.json")
             .then((res) => res.json())

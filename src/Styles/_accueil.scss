@@ -57,10 +57,11 @@ body {
     width: 1140px;
     margin: auto;
     border-radius: $base-border-radius;
-    background-color: rgb(222, 218, 218);
+    background-color: #f6f6f6;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 50px;
     padding: 50px;
+    margin-bottom: 50px;
     text-decoration: none;
 
     a {

@@ -31,6 +31,7 @@ function Apropos() {
                     <Collapse key={item.title} title={item.title}>
                         <p>{item.content}</p>
                     </Collapse>
+
                 ))}
             </div>
         </div>

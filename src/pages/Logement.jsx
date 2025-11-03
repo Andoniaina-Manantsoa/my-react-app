@@ -1,5 +1,5 @@
+import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Collapse from "../Composants/Collapse.jsx";
 import Carrousel from "../Composants/Carrousel.jsx";
 
@@ -8,13 +8,16 @@ function Logement() {
     const navigate = useNavigate();
     const [logement, setLogement] = useState(null);
 
+    // État pour savoir quel collapse est ouvert
+    const [openCollapse, setOpenCollapse] = useState(null);
+
     useEffect(() => {
         fetch("/logements.json")
             .then((res) => res.json())
             .then((data) => {
                 const found = data.find((item) => item.id === id);
                 if (!found) {
-                    navigate("/error"); // redirige si logement non trouvé
+                    navigate("/error");
                 } else {
                     setLogement(found);
                 }
@@ -25,7 +28,6 @@ function Logement() {
 
     return (
         <div className="logement-page">
-            {/* Carrousel */}
             <Carrousel images={logement.pictures} />
 
             <div className="logement-header">
@@ -38,28 +40,34 @@ function Logement() {
                         ))}
                     </div>
                 </div>
-
+                
                 <div className="logement-host">
                     <div className="host-info">
                         <div className="host-name">{logement.host.name}</div>
                         <img src={logement.host.picture} alt={logement.host.name} className="host-photo" />
                     </div>
-
                     <div className="logement-rating">
                         {Array.from({ length: 5 }, (_, i) => (
                             <span key={i} className={i < logement.rating ? "star filled" : "star"}>★</span>
                         ))}
                     </div>
                 </div>
-
             </div>
 
-            {/* Collapses */}
             <div className="logement-collapses">
-                <Collapse title="Description">
+                <Collapse
+                    title="Description"
+                    isOpen={openCollapse === "Description"}
+                    onToggle={() => setOpenCollapse(openCollapse === "Description" ? null : "Description")}
+                >
                     <p>{logement.description}</p>
                 </Collapse>
-                <Collapse title="Équipements">
+
+                <Collapse
+                    title="Équipements"
+                    isOpen={openCollapse === "Équipements"}
+                    onToggle={() => setOpenCollapse(openCollapse === "Équipements" ? null : "Équipements")}
+                >
                     <ul>
                         {logement.equipments.map((eq) => (
                             <li key={eq}>{eq}</li>
@@ -72,5 +80,3 @@ function Logement() {
 }
 
 export default Logement;
-
-

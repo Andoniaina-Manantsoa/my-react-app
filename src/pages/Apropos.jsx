@@ -1,6 +1,7 @@
 import Collapse from "../Composants/Collapse.jsx";
 
 function Apropos() {
+    // Données des collapses
     const collapsesData = [
         {
             title: "Fiabilité",

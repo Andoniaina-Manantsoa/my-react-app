@@ -4,13 +4,19 @@ import Collapse from "../Composants/Collapse.jsx";
 import Carrousel from "../Composants/Carrousel.jsx";
 
 function Logement() {
+    // Récupération de l'ID du logement depuis les paramètres d'URL
     const { id } = useParams();
+
+    // Navigation pour rediriger en cas d'erreur
     const navigate = useNavigate();
+
+    // État pour stocker les données du logement
     const [logement, setLogement] = useState(null);
 
     // État pour savoir quel collapse est ouvert
     const [openCollapse, setOpenCollapse] = useState(null);
 
+    // Récupération des données du logement au chargement du composant
     useEffect(() => {
         fetch("/logements.json")
             .then((res) => res.json())
@@ -26,6 +32,7 @@ function Logement() {
 
     if (!logement) return null;
 
+    // Rendu du composant
     return (
         <div className="logement-page">
             <Carrousel images={logement.pictures} />
@@ -40,7 +47,7 @@ function Logement() {
                         ))}
                     </div>
                 </div>
-                
+
                 <div className="logement-host">
                     <div className="host-info">
                         <div className="host-name">{logement.host.name}</div>

@@ -1,6 +1,6 @@
+import Card from "@/Composants/Card.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import Card from "../Composants/Card.jsx";
 
 function Accueil() {
 

@@ -120,6 +120,13 @@ if (loading) return <div>Chargement...</div>;
 - **Impact :** Erreurs d'exécution potentielles si la structure des données change
 - **Solution :** Ajouter un optional chaining ou une validation
 
+### 17. **Design des Cards Non Conforme à la Maquette Figma**
+**Localisation :** `src/Composants/Card.jsx`
+- **Problème :** Le design des cards n'est pas conforme à la maquette Figma
+- **Impact :** Expérience utilisateur différente de celle prévue, incohérence visuelle avec le design attendu
+- **Solution :** Aligner le design des cards avec la maquette Figma (ajouter le lien Figma vers l'élément exact si disponible)
+- **Référence Figma :** [Lien à ajouter vers l'élément exact de la maquette Figma]
+
 ## 📁 Problèmes de Structure de Fichiers
 
 ### 18. **Champ main Incorrect dans package.json** ✅ CORRIGÉ
@@ -133,9 +140,9 @@ if (loading) return <div>Chargement...</div>;
 
 - **Problèmes Critiques :** 4 (3 ✅ corrigés, 1 restant)
 - **Problèmes Importants :** 4 (0 corrigés, 4 restants)
-- **Problèmes de Qualité de Code :** 6 (0 corrigés, 6 restants)
+- **Problèmes de Qualité de Code :** 7 (0 corrigés, 7 restants)
 - **Problèmes de Structure de Fichiers :** 1 (1 ✅ corrigé, 0 restant)
-- **Total de Problèmes Trouvés :** 15
+- **Total de Problèmes Trouvés :** 16
 - **Total de Problèmes Corrigés :** 4 ✅
 
 **Problèmes corrigés :**

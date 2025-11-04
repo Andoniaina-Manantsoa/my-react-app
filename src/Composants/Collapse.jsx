@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import "../Styles/_collapse.scss";
+import "@/Styles/_collapse.scss";
 
 function Collapse({ title, children, isOpen: controlledIsOpen, onToggle }) {
 

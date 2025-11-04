@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import Header from "./Composants/Header.jsx";
-import Error from "./Composants/Error.jsx";
-import Footer from "./Composants/Footer.jsx";
-import Accueil from "./pages/Accueil.jsx";
-import Apropos from "./pages/Apropos.jsx";
-import Logement from "./pages/Logement.jsx";
+import Header from "@/Composants/Header.jsx";
+import Error from "@/Composants/Error.jsx";
+import Footer from "@/Composants/Footer.jsx";
+import Accueil from "@/pages/Accueil.jsx";
+import Apropos from "@/pages/Apropos.jsx";
+import Logement from "@/pages/Logement.jsx";
 
 function App() {
     return (

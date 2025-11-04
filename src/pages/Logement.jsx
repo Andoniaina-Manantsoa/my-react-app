@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import Carrousel from "../Composants/Carrousel.jsx";
-import Collapse from "../Composants/Collapse.jsx";
+import Carrousel from "@/Composants/Carrousel.jsx";
+import Collapse from "@/Composants/Collapse.jsx";
 
 function Logement() {
     // Récupération de l'ID du logement depuis les paramètres d'URL

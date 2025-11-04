@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router";
 import Collapse from "../Composants/Collapse.jsx";
 import Carrousel from "../Composants/Carrousel.jsx";
 

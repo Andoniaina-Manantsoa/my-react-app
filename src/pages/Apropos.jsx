@@ -2,6 +2,7 @@ import { useState } from "react";
 import Collapse from "@/Composants/Collapse.jsx";
 
 function Apropos() {
+    // Données des collapses
     const collapsesData = [
         { title: "Fiabilité", content: "Les annonces postées sur Kasa garantissent une fiabilité totale..." },
         { title: "Respect", content: "Le respect est une valeur essentielle pour tous les utilisateurs..." },
@@ -9,8 +10,10 @@ function Apropos() {
         { title: "Sécurité", content: "La sécurité de nos utilisateurs est notre priorité absolue..." }
     ];
 
+    // États pour les collapses ouverts
     const [openCollapses, setOpenCollapses] = useState([]);
 
+    // Gestion de l'ouverture/fermeture des collapses
     const handleToggle = (title) => {
         setOpenCollapses(prev =>
             prev.includes(title)

@@ -4,14 +4,17 @@ import Carrousel from "@/Composants/Carrousel.jsx";
 import Collapse from "@/Composants/Collapse.jsx";
 
 function Logement() {
+    // Récupération de l'ID du logement depuis les paramètres d'URL
     const { id } = useParams();
     const navigate = useNavigate();
 
+    // États pour le logement, le chargement, l'erreur et les collapses ouverts
     const [logement, setLogement] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [openCollapses, setOpenCollapses] = useState([]);
 
+    // Fetch du logement en fonction de l'ID
     useEffect(() => {
         fetch("/logements.json")
             .then((res) => {
@@ -30,7 +33,7 @@ function Logement() {
             .finally(() => setLoading(false));
     }, [id, navigate]);
 
-    // 🟢 Effet global uniquement sur cette page
+    // Effet global uniquement sur cette page
     useEffect(() => {
         if (openCollapses.length > 0) {
             document.body.classList.add("body--collapsed");
@@ -39,6 +42,7 @@ function Logement() {
         }
     }, [openCollapses]);
 
+    // Gestion de l'ouverture/fermeture des collapses
     const handleToggle = (title) => {
         setOpenCollapses(prev =>
             prev.includes(title)
@@ -47,6 +51,7 @@ function Logement() {
         );
     };
 
+    // Affichage en fonction de l'état
     if (loading) return <div>Chargement...</div>;
     if (error) return <div>Erreur : {error}</div>;
     if (!logement) return null;

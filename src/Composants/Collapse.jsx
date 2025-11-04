@@ -1,11 +1,14 @@
 import { useState, useRef, useEffect } from "react";
 import "@/Styles/_collapse.scss";
 
+// Composant Collapse réutilisable avec mode contrôlé et non contrôlé
 function Collapse({ title, children, isOpen: controlledIsOpen, onToggle }) {
+    // Gestion de l'état local si non contrôlé
     const [localOpen, setLocalOpen] = useState(false);
     const isControlled = onToggle !== undefined;
     const isOpen = isControlled ? controlledIsOpen : localOpen;
 
+    // Référence au contenu pour la gestion de la hauteur
     const contentRef = useRef(null);
     const [height, setHeight] = useState(0);
 
@@ -16,6 +19,7 @@ function Collapse({ title, children, isOpen: controlledIsOpen, onToggle }) {
         }
     }, [isOpen, children]);
 
+    // Gestion du clic sur l'en-tête
     const handleClick = () => {
         if (isControlled) {
             onToggle();

@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
-import Collapse from "../Composants/Collapse.jsx";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router";
 import Carrousel from "../Composants/Carrousel.jsx";
+import Collapse from "../Composants/Collapse.jsx";
 
 function Logement() {
     // Récupération de l'ID du logement depuis les paramètres d'URL
@@ -19,7 +19,10 @@ function Logement() {
     // Récupération des données du logement au chargement du composant
     useEffect(() => {
         fetch("/logements.json")
-            .then((res) => res.json())
+            .then((res) => {
+                if (!res.ok) throw new Error(`Erreur HTTP ! statut : ${res.status}`);
+                return res.json();
+            })
             .then((data) => {
                 const found = data.find((item) => item.id === id);
                 if (!found) {
@@ -27,8 +30,13 @@ function Logement() {
                 } else {
                     setLogement(found);
                 }
+            })
+            .catch((err) => {
+                console.error("Erreur lors de la récupération du logement :", err);
+                navigate("/error");
             });
-    }, [id, navigate]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [id]);
 
     if (!logement) return null;
 

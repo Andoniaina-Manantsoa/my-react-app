@@ -7,7 +7,7 @@
 - **Problème :** `react-router` v7.9.4 entre en conflit avec `react-router-dom` v6.10.0. Ces versions devraient avoir la même version majeure.
 - **Impact :** Erreurs d'exécution potentielles et comportement inattendu
 - **Solution :** Utiliser des versions cohérentes (soit les deux en v6, soit les deux en v7)
-- **✅ Correction appliquée :** Migré vers `react-router` v7.1.3 (dernière version). Dans React Router v7, `react-router-dom` n'est plus nécessaire, tout est maintenant dans `react-router`. Tous les imports ont été mis à jour de `react-router-dom` vers `react-router`.
+- **✅ Correction appliquée :** Supprimé `react-router` (inutile car `react-router-dom` v6.10.0 contient déjà `react-router`)
 
 ### 2. **Dépendances Inutiles** ✅ CORRIGÉ
 **Localisation :** `package.json`
@@ -16,7 +16,7 @@
 - **Solution :** Supprimer ces dépendances
 - **✅ Correction appliquée :** Supprimé `babel-cli` et `babel-preset-react-app` du `package.json`
 
-### 3. **Gestion d'Erreurs Manquante dans Fetch**
+### 3. **Gestion d'Erreurs Manquante dans Fetch** ✅ CORRIGÉ
 **Localisation :** `src/pages/Logement.jsx` (lignes 20-31)
 - **Problème :** Pas de gestionnaire `.catch()` pour les erreurs de fetch, et pas de vérification du statut HTTP avant de parser le JSON
 - **Impact :** L'application plante silencieusement en cas d'erreurs réseau ou de réponses invalides
@@ -40,6 +40,7 @@ fetch("/logements.json")
         navigate("/error");
     });
 ```
+- **✅ Correction appliquée :** Ajout de la vérification `res.ok`, gestion d'erreurs avec `.catch()`, et navigation vers la page d'erreur en cas d'échec
 
 ### 4. **Problème de Sécurité de Type avec Rating**
 **Localisation :** `src/pages/Logement.jsx` (ligne 58)
@@ -90,12 +91,6 @@ if (loading) return <div>Chargement...</div>;
 - **Impact :** Mauvaise accessibilité pour les lecteurs d'écran
 - **Solution :** Ajouter des labels ARIA appropriés et du HTML sémantique
 
-### 10. **Validation des Props Manquante**
-**Localisation :** Tous les composants
-- **Problème :** Pas de PropTypes ou TypeScript pour la vérification de type
-- **Impact :** Erreurs d'exécution possibles si de mauvaises props sont passées
-- **Solution :** Ajouter PropTypes ou migrer vers TypeScript
-
 ### 11. **Commentaires de Code**
 **Localisation :** `src/pages/Accueil.jsx` (ligne 2)
 - **Problème :** Le commentaire `// ← à ajouter` devrait être supprimé
@@ -113,11 +108,6 @@ if (loading) return <div>Chargement...</div>;
 - **Impact :** Mineur - mais la meilleure pratique est d'importer uniquement ce qui est nécessaire
 - **Note :** L'utilisation actuelle est correcte puisque `React.StrictMode` est utilisé
 
-### 14. **Error Boundaries Manquants**
-- **Problème :** Pas de Error Boundaries React pour capturer les erreurs de composants
-- **Impact :** L'application entière plante en cas d'erreur de composant
-- **Solution :** Ajouter un composant Error Boundary
-
 ### 15. **Opportunités d'Optimisation des Performances**
 **Localisation :** `src/pages/Accueil.jsx` (ligne 25)
 - **Problème :** Pas de mémorisation pour les composants Card
@@ -130,38 +120,27 @@ if (loading) return <div>Chargement...</div>;
 - **Impact :** Erreurs d'exécution potentielles si la structure des données change
 - **Solution :** Ajouter un optional chaining ou une validation
 
-### 17. **Texte En Dur**
-**Localisation :** Plusieurs composants
-- **Problème :** Le contenu texte est en dur (non internationalisé)
-- **Impact :** Difficile d'ajouter l'i18n plus tard
-- **Note :** Seulement un problème si l'i18n est prévu
-
 ## 📁 Problèmes de Structure de Fichiers
 
-### 18. **Champ main Incorrect dans package.json**
+### 18. **Champ main Incorrect dans package.json** ✅ CORRIGÉ
 **Localisation :** `package.json` (ligne 38)
 - **Problème :** `"main": "eslint.config.js"` est incorrect - devrait être le point d'entrée ou supprimé
 - **Impact :** Confus pour les consommateurs du package
 - **Solution :** Supprimer ou définir le point d'entrée correct
-
-## 🔧 Recommandations
-
-1. **Ajouter des règles ESLint** pour un style de code cohérent
-2. **Ajouter Prettier** avec un fichier de configuration
-3. **Considérer la migration vers TypeScript** pour la sécurité de type
-4. **Ajouter des tests unitaires** pour les composants
-5. **Ajouter des error boundaries** pour une meilleure gestion des erreurs
-6. **Implémenter des états de chargement** pour une meilleure UX
-7. **Ajouter des messages d'erreur appropriés** aux utilisateurs au lieu de juste console.error
-8. **Considérer l'utilisation de React Query** pour une meilleure gestion de la récupération des données
-9. **Ajouter des balises meta SEO** appropriées
-10. **Considérer le code splitting** pour de meilleures performances
+- **✅ Correction appliquée :** Supprimé le champ `"main"` incorrect car il n'est pas nécessaire pour une application frontend (le point d'entrée est défini dans index.html pour Vite)
 
 ## Résumé
 
-- **Problèmes Critiques :** 4
-- **Problèmes Importants :** 4
-- **Problèmes de Qualité de Code :** 11
-- **Total de Problèmes Trouvés :** 19
+- **Problèmes Critiques :** 4 (3 ✅ corrigés, 1 restant)
+- **Problèmes Importants :** 4 (0 corrigés, 4 restants)
+- **Problèmes de Qualité de Code :** 6 (0 corrigés, 6 restants)
+- **Problèmes de Structure de Fichiers :** 1 (1 ✅ corrigé, 0 restant)
+- **Total de Problèmes Trouvés :** 15
+- **Total de Problèmes Corrigés :** 4 ✅
 
-La plupart des problèmes critiques sont liés à la gestion des erreurs et à la gestion des dépendances. La base de code est fonctionnelle mais nécessite des améliorations dans la gestion des erreurs, l'accessibilité et la cohérence du code.
+**Problèmes corrigés :**
+- ✅ Conflits de versions de dépendances (problème #1)
+- ✅ Dépendances inutiles (problème #2)
+- ✅ Gestion d'erreurs manquante dans fetch (problème #3)
+- ✅ Champ main incorrect dans package.json (problème #18)
+

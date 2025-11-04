@@ -1,4 +1,4 @@
-import Collapse from "../Composants/Collapse.jsx";
+import Collapse from "@/Composants/Collapse.jsx";
 
 function Apropos() {
     // Données des collapses

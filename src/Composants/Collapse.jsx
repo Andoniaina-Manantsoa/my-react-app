@@ -2,20 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import "@/Styles/_collapse.scss";
 
 function Collapse({ title, children, isOpen: controlledIsOpen, onToggle }) {
-
-    // État local pour gérer l'ouverture si non contrôlé
     const [localOpen, setLocalOpen] = useState(false);
-
-    // Déterminer si le composant est contrôlé ou non
     const isControlled = onToggle !== undefined;
-
-    // Déterminer l'état d'ouverture actuel
     const isOpen = isControlled ? controlledIsOpen : localOpen;
 
-    // Référence pour mesurer la hauteur du contenu
     const contentRef = useRef(null);
-
-    // État pour la hauteur du contenu
     const [height, setHeight] = useState(0);
 
     // Met à jour la hauteur lors de l'ouverture/fermeture
@@ -25,12 +16,11 @@ function Collapse({ title, children, isOpen: controlledIsOpen, onToggle }) {
         }
     }, [isOpen, children]);
 
-    // Gère le clic sur l'en-tête
     const handleClick = () => {
         if (isControlled) {
-            onToggle(); // Logement contrôle l'ouverture
+            onToggle();
         } else {
-            setLocalOpen(!localOpen); // Apropos utilise son état local
+            setLocalOpen(!localOpen);
         }
     };
 

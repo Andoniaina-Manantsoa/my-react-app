@@ -1,5 +1,12 @@
 @use './variables' as *;
 
+/* Animation globale quand un collapse est ouvert */
+body.body--collapsed {
+    transform: scale(1.01);
+    transition: transform 0.3s ease;
+    transform-origin: top center;
+}
+
 .collapse {
     width: 100%;
     border-radius: $base-border-radius;

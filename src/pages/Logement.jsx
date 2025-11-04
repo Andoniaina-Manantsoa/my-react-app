@@ -4,16 +4,13 @@ import Carrousel from "@/Composants/Carrousel.jsx";
 import Collapse from "@/Composants/Collapse.jsx";
 
 function Logement() {
-
-    // Récupération de l'ID du logement depuis les paramètres d'URL
     const { id } = useParams();
-
-    // États pour gérer le logement, le chargement, les erreurs et l'ouverture des collapses
     const navigate = useNavigate();
+
     const [logement, setLogement] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [openCollapse, setOpenCollapse] = useState(null);
+    const [openCollapses, setOpenCollapses] = useState([]);
 
     useEffect(() => {
         fetch("/logements.json")
@@ -23,11 +20,8 @@ function Logement() {
             })
             .then((data) => {
                 const found = data.find((item) => item.id === id);
-                if (!found) {
-                    navigate("*"); // redirige vers la route catch-all
-                } else {
-                    setLogement(found);
-                }
+                if (!found) navigate("*");
+                else setLogement(found);
             })
             .catch((err) => {
                 console.error("Erreur lors du fetch logement :", err);
@@ -36,7 +30,23 @@ function Logement() {
             .finally(() => setLoading(false));
     }, [id, navigate]);
 
-    // Rendu conditionnel en fonction de l'état de chargement et des erreurs
+    // 🟢 Effet global uniquement sur cette page
+    useEffect(() => {
+        if (openCollapses.length > 0) {
+            document.body.classList.add("body--collapsed");
+        } else {
+            document.body.classList.remove("body--collapsed");
+        }
+    }, [openCollapses]);
+
+    const handleToggle = (title) => {
+        setOpenCollapses(prev =>
+            prev.includes(title)
+                ? prev.filter(t => t !== title)
+                : [...prev, title]
+        );
+    };
+
     if (loading) return <div>Chargement...</div>;
     if (error) return <div>Erreur : {error}</div>;
     if (!logement) return null;
@@ -59,11 +69,20 @@ function Logement() {
                 <div className="logement-host">
                     <div className="host-info">
                         <div className="host-name">{logement.host.name}</div>
-                        <img src={logement.host.picture} alt={logement.host.name} className="host-photo" />
+                        <img
+                            src={logement.host.picture}
+                            alt={logement.host.name}
+                            className="host-photo"
+                        />
                     </div>
                     <div className="logement-rating">
                         {Array.from({ length: 5 }, (_, i) => (
-                            <span key={i} className={i < logement.rating ? "star filled" : "star"}>★</span>
+                            <span
+                                key={i}
+                                className={i < logement.rating ? "star filled" : "star"}
+                            >
+                                ★
+                            </span>
                         ))}
                     </div>
                 </div>
@@ -72,16 +91,16 @@ function Logement() {
             <div className="logement-collapses">
                 <Collapse
                     title="Description"
-                    isOpen={openCollapse === "Description"}
-                    onToggle={() => setOpenCollapse(openCollapse === "Description" ? null : "Description")}
+                    isOpen={openCollapses.includes("Description")}
+                    onToggle={() => handleToggle("Description")}
                 >
                     <p>{logement.description}</p>
                 </Collapse>
 
                 <Collapse
                     title="Équipements"
-                    isOpen={openCollapse === "Équipements"}
-                    onToggle={() => setOpenCollapse(openCollapse === "Équipements" ? null : "Équipements")}
+                    isOpen={openCollapses.includes("Équipements")}
+                    onToggle={() => handleToggle("Équipements")}
                 >
                     <ul>
                         {logement.equipments.map((eq) => (

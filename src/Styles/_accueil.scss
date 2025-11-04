@@ -76,7 +76,7 @@ body {
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     background-color: $base-color;
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out;
     cursor: pointer;
 
     &:hover {
@@ -98,7 +98,6 @@ body {
 
     &__body {
         padding: 16px;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.2));
 
     h2,
         .card-title {

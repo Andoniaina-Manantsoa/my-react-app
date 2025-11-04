@@ -3,10 +3,9 @@
 .collapse {
     width: 100%;
     border-radius: $base-border-radius;
-    background-color: $base-color;
     overflow: hidden;
-    color: #ffffff;
     margin-bottom: 15px;
+    background-color: #f6f6f6;
 
     .collapse-header {
         display: flex;
@@ -17,8 +16,10 @@
         font-weight: bold;
         font-size: 14px;
         background-color: $base-color;
+        transition: background-color 0.3s ease;
 
         h2 {
+            color: #fff;
             font-size: 16px;
             margin: 0;
         }
@@ -26,6 +27,7 @@
         .arrow {
             transition: transform 0.3s;
             font-size: 16px;
+            color: #fff;
 
             &.open {
                 transform: rotate(180deg);
@@ -37,7 +39,7 @@
         height: 0;
         overflow: hidden;
         padding: 0 20px;
-        transition: height 0.3s ease;
+        transition: max-height 0.4s ease, padding 0.3s ease;
 
         p,
         ul {

@@ -4,43 +4,43 @@ import Carrousel from "@/Composants/Carrousel.jsx";
 import Collapse from "@/Composants/Collapse.jsx";
 
 function Logement() {
+
     // Récupération de l'ID du logement depuis les paramètres d'URL
     const { id } = useParams();
 
-    // Navigation pour rediriger en cas d'erreur
+    // États pour gérer le logement, le chargement, les erreurs et l'ouverture des collapses
     const navigate = useNavigate();
-
-    // État pour stocker les données du logement
     const [logement, setLogement] = useState(null);
-
-    // État pour savoir quel collapse est ouvert
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [openCollapse, setOpenCollapse] = useState(null);
 
-    // Récupération des données du logement au chargement du composant
     useEffect(() => {
         fetch("/logements.json")
             .then((res) => {
-                if (!res.ok) throw new Error(`Erreur HTTP ! statut : ${res.status}`);
+                if (!res.ok) throw new Error(`Erreur HTTP : ${res.status}`);
                 return res.json();
             })
             .then((data) => {
                 const found = data.find((item) => item.id === id);
                 if (!found) {
-                    navigate("/error");
+                    navigate("*"); // redirige vers la route catch-all
                 } else {
                     setLogement(found);
                 }
             })
             .catch((err) => {
-                console.error("Erreur lors de la récupération du logement :", err);
-                navigate("/error");
-            });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [id]);
+                console.error("Erreur lors du fetch logement :", err);
+                setError(err.message);
+            })
+            .finally(() => setLoading(false));
+    }, [id, navigate]);
 
+    // Rendu conditionnel en fonction de l'état de chargement et des erreurs
+    if (loading) return <div>Chargement...</div>;
+    if (error) return <div>Erreur : {error}</div>;
     if (!logement) return null;
 
-    // Rendu du composant
     return (
         <div className="logement-page">
             <Carrousel images={logement.pictures} />

@@ -14,8 +14,8 @@ function Carrousel({ images }) {
             <img src={images[index]} alt={`Slide ${index + 1}`} className="carrousel-image" />
             {images.length > 1 && (
                 <>
-                    <button className="prev" onClick={prev}><i className="fa-solid fa-chevron-left"></i></button>
-                    <button className="next" onClick={next}><i className="fa-solid fa-chevron-right"></i></button>
+                    <button className="prev" onClick={prev} aria-label="Image précédente"><i className="fa-solid fa-chevron-left"></i></button>
+                    <button className="next" onClick={next} aria-label="Image suivante"><i className="fa-solid fa-chevron-right"></i></button>
                     <span className="counter">{index + 1}/{images.length}</span>
                 </>
             )}

@@ -50,7 +50,7 @@ function Logement() {
                     <h1>{logement.title}</h1>
                     <p>{logement.location}</p>
                     <div className="logement-tags">
-                        {logement.tags.map((tag) => (
+                        {logement?.tags?.map((tag) => (
                             <span key={tag} className="tag">{tag}</span>
                         ))}
                     </div>

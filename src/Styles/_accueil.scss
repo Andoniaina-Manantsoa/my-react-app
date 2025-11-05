@@ -84,7 +84,7 @@ body {
         transform: scale(1.02);
     }
 
-    .card__image {
+    .image {
         position: absolute;
         inset: 0;
         width: 100%;
@@ -238,17 +238,13 @@ footer {
     }
 
     .card {
-        &__header {
-            height: 200px;
-        }
+        height: 180px; // 🔹 plus petite carte
+        //border-radius: 8px 8px 8px 8px;
 
-        &__body {
-            padding: 15px;
-
-            .card-title {
-                font-size: 16px;
-                margin-top: 8px;
-            }
+        .card-title {
+            font-size: 14px;
+            bottom: 10px;
+            left: 10px;
         }
     }
 

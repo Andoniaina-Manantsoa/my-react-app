@@ -2,6 +2,7 @@ import Card from "@/Composants/Card.jsx";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
+// Composant de la page d'accueil
 function Accueil() {
 
     // État pour stocker les logements

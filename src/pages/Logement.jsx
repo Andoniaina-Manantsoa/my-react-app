@@ -60,6 +60,7 @@ function Logement() {
         <div className="logement-page">
             <Carrousel images={logement.pictures} />
 
+            {/* Informations principales du logement */}
             <div className="logement-header">
                 <div className="logement-info">
                     <h1>{logement.title}</h1>
@@ -71,6 +72,7 @@ function Logement() {
                     </div>
                 </div>
 
+                {/* Informations de l'hôte et évaluation */}
                 <div className="logement-host">
                     <div className="host-info">
                         <div className="host-name">{logement.host.name}</div>
@@ -93,6 +95,7 @@ function Logement() {
                 </div>
             </div>
 
+            {/* Informations supplémentaires */}
             <div className="logement-collapses">
                 <Collapse
                     title="Description"

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import "@/Styles/_carrousel.scss";
 
+// Composant Carrousel pour afficher une série d'images avec navigation
 function Carrousel({ images }) {
+    // État pour suivre l'index de l'image actuellement affichée
     const [index, setIndex] = useState(0);
 
+    // Fonctions pour naviguer entre les images
     const next = () => setIndex((prev) => (prev + 1) % images.length);
     const prev = () => setIndex((prev) => (prev - 1 + images.length) % images.length);
 

@@ -1,5 +1,6 @@
 import React from "react";
 
+// Composant Card pour afficher une image avec un titre en overlay
 function Card({ image, title }) {
     return (
         <div className="card">

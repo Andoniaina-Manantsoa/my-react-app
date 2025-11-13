@@ -249,7 +249,12 @@ footer {
     }
 
     footer {
-        font-size: 12px;
+        width: 335px;
         padding: 20px;
+
+        p {
+            width: 134px;
+            font-size: 12px;
+        }
     }
 }

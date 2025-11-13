@@ -36,7 +36,7 @@ function Logement() {
     // Effet global uniquement sur cette page
     useEffect(() => {
         if (openCollapses.length > 0) {
-            document.body.classList.add("body--collapsed");
+            document.body.classList.add("body--collapsed"); 
         } else {
             document.body.classList.remove("body--collapsed");
         }
